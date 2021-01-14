@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="zero_layout_weight">0dp</dimen>
+    <dimen name="default_parent_padding">8dp</dimen>
+    <dimen name="button_margin">1dp</dimen>
+</resources>
