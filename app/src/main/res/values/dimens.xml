@@ -3,4 +3,5 @@
     <dimen name="zero_layout_weight">0dp</dimen>
     <dimen name="default_parent_padding">8dp</dimen>
     <dimen name="button_margin">1dp</dimen>
+    <dimen name="text_size">40sp</dimen>
 </resources>
