@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:padding="@dimen/default_parent_padding"
+    tools:context=".SettingsActivity">
+
+    <RadioGroup
+        android:id="@+id/theme_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/orange_theme"
+            style="@style/SettingsSwitch"
+            android:text="@string/orange_theme" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/blue_theme"
+            style="@style/SettingsSwitch"
+            android:text="@string/blue_theme" />
+    </RadioGroup>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/zero_layout_weight"
+        android:layout_weight="1"
+        tools:ignore="InefficientWeight" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/return_button"
+        style="@style/FunctionalButton"
+        android:layout_weight="0"
+        android:text="@string/return_button" />
+
+</LinearLayout>

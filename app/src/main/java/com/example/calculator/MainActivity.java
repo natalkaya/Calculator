@@ -1,5 +1,6 @@
 package com.example.calculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
 import java.util.Optional;
 
+import static com.example.calculator.R.id.button_settings;
 import static com.example.calculator.R.id.clear_text;
 import static com.example.calculator.R.id.equally;
 import static com.example.calculator.R.id.input_field;
@@ -27,20 +29,29 @@ import static com.example.calculator.R.id.number_8;
 import static com.example.calculator.R.id.number_9;
 import static com.example.calculator.R.id.plus;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, Constants {
 
     private final static String TAG = "[LifeCycleActivity]";
     private final static double DEFAULT_RESULT = 0;
     private final static String DEFAULT_NUMBER_FORMAT = "%1$,.2f";
 
     private TextView inputField;
+    private Button buttonSettings;
     private double calculationResult;
     private String currentOperation = "";
     private Optional<Double> bufferedNumber = Optional.empty();
 
+    private static AppTheme theme = AppTheme.DEFAULT;
+    private static final int REQUEST_CODE_SETTING_ACTIVITY = 99;
+
+    private void setTheme(AppTheme theme) {
+        MainActivity.theme = theme;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(theme.getCodeStyleId());
         setContentView(R.layout.activity_main);
         this.calculationResult = DEFAULT_RESULT;
         initView();
@@ -48,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initView() {
         inputField = findViewById(input_field);
+
         initClickListener(plus);
         initClickListener(minus);
         initClickListener(clear_text);
@@ -62,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initClickListener(number_7);
         initClickListener(number_8);
         initClickListener(number_9);
+
+        buttonSettings = findViewById(button_settings);
+        initClickListenerForButtonSettings();
     }
 
     private double getInputValueAsDouble() {
@@ -119,6 +134,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initClickListener(int id) {
         findViewById(id).setOnClickListener(this);
+    }
+
+    private void initClickListenerForButtonSettings() {
+        buttonSettings.setOnClickListener(v -> {
+            Intent runSettings = new Intent(MainActivity.this, SettingsActivity.class);
+            runSettings.putExtra(APP_THEME, AppTheme.DEFAULT.getNumber());
+            startActivityForResult(runSettings, REQUEST_CODE_SETTING_ACTIVITY);
+        });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode != REQUEST_CODE_SETTING_ACTIVITY) {
+            super.onActivityResult(requestCode, resultCode, data);
+            return;
+        }
+        if (resultCode == RESULT_OK) {
+            setTheme(AppTheme.defineBy(data.getIntExtra(APP_THEME, AppTheme.DEFAULT.getNumber())));
+            recreate();
+        }
     }
 
     @Override
