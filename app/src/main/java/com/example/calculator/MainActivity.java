@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void showCalculatedResult() {
-        Log.i(TAG, String.format(Locale.getDefault(),"Showing calculated result %f", calculationResult));
+        Log.i(TAG, String.format(Locale.getDefault(), "Showing calculated result %f", calculationResult));
         clearText();
         inputField.setText(String.format(Locale.getDefault(), DEFAULT_NUMBER_FORMAT, calculationResult));
     }
