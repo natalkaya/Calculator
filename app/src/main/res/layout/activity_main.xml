@@ -141,6 +141,12 @@
             android:text="@string/equally" />
     </LinearLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/change_theme"
+        style="@style/FunctionalButton"
+        android:layout_weight="@dimen/zero_layout_weight"
+        android:text="@string/change_theme" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

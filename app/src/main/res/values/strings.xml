@@ -20,4 +20,5 @@
     <string name="percent">%</string>
     <string name="division">/</string>
     <string name="hint_value">0</string>
+    <string name="change_theme">Change theme</string>
 </resources>
