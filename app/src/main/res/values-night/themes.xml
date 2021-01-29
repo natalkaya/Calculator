@@ -12,5 +12,27 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/button_margin</item>
+    </style>
+
+    <style name="NumberButton" parent="Theme.Calculator">
+        <item name="backgroundTint">@color/number_button</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="FunctionalButton" parent="Theme.Calculator">
+        <item name="backgroundTint">@color/purple_700</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:text">@android:string/ok</item>
+    </style>
+
+    <style name="TextView" parent="Theme.Calculator">
+        <item name="background">@color/teal_200</item>
+        <item name="fontFamily">cursive</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:textSize">@dimen/text_size</item>
     </style>
 </resources>

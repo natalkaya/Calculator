@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/Theme.Calculator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -140,6 +141,12 @@
             style="@style/FunctionalButton"
             android:text="@string/equally" />
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_settings"
+        style="@style/FunctionalButton"
+        android:layout_weight="0"
+        android:text="@string/change_theme" />
 
     <Space
         android:layout_width="match_parent"
